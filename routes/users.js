@@ -27,8 +27,9 @@ router.post('/signup', (req,res) => {
         password : hash,
         token : token
       })
-      newUser.save().then(() => {
-        res.json({result:true, token})
+      newUser.save().then((data) => {
+        console.log(data)
+        res.json({result:true, token , username:data.username})
       })
     } else {
         res.json({result:false,error:'Username taken'})
@@ -46,7 +47,7 @@ router.post('/signin' , (req,res) => {
   User.findOne({username:req.body.username})
   .then(data => {
     if(data && bcrypt.compareSync(req.body.password,data.password)){
-      res.json({result:true,token:data.token})
+      res.json({result:true,token:data.token,username:data.username})
     } else {
       res.json({result:false,error:'User not found'})
     }
