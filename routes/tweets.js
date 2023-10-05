@@ -31,7 +31,7 @@ router.get('/latest' , (req,res) => {
 })
 
 router.get('/search/:hashtag' , (req,res) => {
-    Tweet.find({hashtag : new RegExp(req.body.hashtag,'i')})
+    Tweet.find({hashtag : hashtag.includes(new RegExp(req.params.hashtag,'i'))})
     .then( data => {
         if(data){
             res.json({result:true , tweets : data})
