@@ -11,6 +11,7 @@ router.post('/add' , (req,res) => {
     }
     const newTweet = new Tweet ({
         texte : req.body.texte,
+        firstname : req.body.firstname,
         username : req.body.username,
         token : req.body.token,
         hashtag : req.body.hashtag,
@@ -36,6 +37,17 @@ router.get('/search/:hashtag' , (req,res) => {
             res.json({result:true , tweets : data})
         } else {
             res.json({result:false , error : 'No tweets with this hashtag'})
+        }
+    })
+})
+
+router.delete('/delete' ,(req,res) => {
+    Tweet.deleteOne({texte:req.body.texte})
+    .then (data => {
+        if(data.deletedCount > 0){
+            res.json({result:true,message: 'Tweet has been deleted'})
+        } else {
+            res.json({result:false,error:'tweet has not been found'})
         }
     })
 })

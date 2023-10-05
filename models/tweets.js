@@ -3,6 +3,7 @@ const mongoose = require ('mongoose')
 
 const tweetsSchema = mongoose.Schema({
     texte : String,
+    firstname : String,
     username : String,
     token : String,
     hashtag : String,
