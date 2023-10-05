@@ -6,7 +6,7 @@ const tweetsSchema = mongoose.Schema({
     firstname : String,
     username : String,
     token : String,
-    hashtag : String,
+    hashtag : Array,
     date : Date
 })
 
