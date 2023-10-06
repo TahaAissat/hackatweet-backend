@@ -31,9 +31,9 @@ router.get('/latest' , (req,res) => {
 })
 
 router.get('/search/:hashtag' , (req,res) => {
-    Tweet.find({hashtag : hashtag.includes(new RegExp(req.params.hashtag,'i'))})
+    Tweet.find({hashtag :'#'+req.params.hashtag})
     .then( data => {
-        if(data){
+        if(data.length>0){
             res.json({result:true , tweets : data})
         } else {
             res.json({result:false , error : 'No tweets with this hashtag'})
