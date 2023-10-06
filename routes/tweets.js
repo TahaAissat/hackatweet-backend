@@ -64,7 +64,7 @@ router.post('/addlike',(req,res) => {
         .then(() => {
             Tweet.findOne({username:req.body.username,texte:req.body.texte})
                  .then(data => {
-                    res.json({result:true,likes:data.likes})
+                    res.json({result:true,tweet:data})
         }) 
     })}
 })
@@ -74,7 +74,7 @@ router.post('/removeLike',(req,res) => {
     .then(()=> {
         Tweet.findOne({username:req.body.username,texte:req.body.texte})
         .then((data) => {
-            res.json({result:true,likes:data.likes})
+            res.json({result:true,tweet:data})
         })
     })
 
