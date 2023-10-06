@@ -54,5 +54,14 @@ router.post('/signin' , (req,res) => {
   })
 })
 
+// Route récuperation des tweet likés
+router.get('/likedTweets' , (req,res) => {
+  User.findOne({username : req.body.username, token : req.body.token})
+  .then( data => {
+    console.log(data)
+    res.json({result:true,data})
+  })
+})
+
 
 module.exports = router;

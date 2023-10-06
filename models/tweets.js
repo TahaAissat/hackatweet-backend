@@ -7,7 +7,8 @@ const tweetsSchema = mongoose.Schema({
     username : String,
     token : String,
     hashtag : Array,
-    date : Date
+    date : Date,
+    likes : [String],
 })
 
 const Tweet = mongoose.model ('tweets' , tweetsSchema)
